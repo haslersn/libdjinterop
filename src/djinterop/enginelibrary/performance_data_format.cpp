@@ -480,12 +480,12 @@ std::vector<char> overview_waveform_data::encode() const
     uint8_t max_high = 0;
     for (auto& entry : waveform)
     {
-        max_low = std::max(max_low, entry.low.value);
-        max_mid = std::max(max_mid, entry.mid.value);
-        max_high = std::max(max_high, entry.high.value);
-        ptr = encode_uint8(entry.low.value, ptr);
-        ptr = encode_uint8(entry.mid.value, ptr);
-        ptr = encode_uint8(entry.high.value, ptr);
+        max_low = std::max(max_low, entry.low);
+        max_mid = std::max(max_mid, entry.mid);
+        max_high = std::max(max_high, entry.high);
+        ptr = encode_uint8(entry.low, ptr);
+        ptr = encode_uint8(entry.mid, ptr);
+        ptr = encode_uint8(entry.high, ptr);
     }
 
     // Encode the maximum values across all entries
@@ -541,9 +541,9 @@ overview_waveform_data overview_waveform_data::decode(
 
     for (auto& entry : result.waveform)
     {
-        std::tie(entry.low.value, ptr) = decode_uint8(ptr);
-        std::tie(entry.mid.value, ptr) = decode_uint8(ptr);
-        std::tie(entry.high.value, ptr) = decode_uint8(ptr);
+        std::tie(entry.low, ptr) = decode_uint8(ptr);
+        std::tie(entry.mid, ptr) = decode_uint8(ptr);
+        std::tie(entry.high, ptr) = decode_uint8(ptr);
     }
 
     // Ignore additional entry at the end

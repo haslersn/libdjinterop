@@ -275,8 +275,6 @@ public:
 
     void set_loops(std::array<std::optional<loop>, 8> loops) const;
 
-    std::vector<waveform_entry> overview_waveform() const;
-
     /// Returns the publisher (metadata) of the track
     std::optional<std::string> publisher() const;
 

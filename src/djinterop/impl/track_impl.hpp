@@ -103,7 +103,6 @@ public:
     virtual void set_loop_at(int32_t index, boost::optional<loop> l) = 0;
     virtual std::array<boost::optional<loop>, 8> loops() = 0;
     virtual void set_loops(std::array<boost::optional<loop>, 8> loops) = 0;
-    virtual std::vector<waveform_entry> overview_waveform() = 0;
     virtual boost::optional<std::string> publisher() = 0;
     virtual void set_publisher(boost::optional<std::string> publisher) = 0;
     virtual int64_t required_waveform_samples_per_entry() = 0;

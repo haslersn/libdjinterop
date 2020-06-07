@@ -271,7 +271,6 @@ public:
     void set_loop_at(int32_t index, boost::optional<loop> l) override;
     std::array<boost::optional<loop>, 8> loops() override;
     void set_loops(std::array<boost::optional<loop>, 8> cues) override;
-    std::vector<waveform_entry> overview_waveform() override;
     boost::optional<std::string> publisher() override;
     void set_publisher(boost::optional<std::string> publisher) override;
     int64_t required_waveform_samples_per_entry() override;

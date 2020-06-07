@@ -653,12 +653,6 @@ void el_track_impl::set_loops(std::array<boost::optional<loop>, 8> cues)
     trans.commit();
 }
 
-std::vector<waveform_entry> el_track_impl::overview_waveform()
-{
-    auto overview_waveform_d = get_overview_waveform_data();
-    return std::move(overview_waveform_d.waveform);
-}
-
 boost::optional<std::string> el_track_impl::publisher()
 {
     return get_metadata_str(metadata_str_type::publisher);
@@ -820,7 +814,8 @@ void el_track_impl::set_waveform(std::vector<waveform_entry> waveform)
         for (int32_t i = 0; i < 1024; ++i)
         {
             auto entry = waveform[waveform.size() * (2 * i + 1) / 2048];
-            overview_waveform_d.waveform.push_back(entry);
+            overview_waveform_d.waveform.push_back(overview_waveform_entry{
+                entry.low.value, entry.mid.value, entry.high.value});
         }
 
         // Make the assumption that the client has respected the required number

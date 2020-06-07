@@ -31,6 +31,24 @@ enum class musical_key;
 
 namespace enginelibrary
 {
+/**
+ * A single overview waveform entry
+ */
+struct overview_waveform_entry
+{
+    uint8_t low;
+    uint8_t mid;
+    uint8_t high;
+
+    friend bool operator==(
+        const overview_waveform_entry& first,
+        const overview_waveform_entry& second) noexcept
+    {
+        return first.low == second.low && first.mid == second.mid &&
+               first.high == second.high;
+    }
+};
+
 struct beat_data
 {
     boost::optional<sampling_info> sampling;
@@ -91,7 +109,7 @@ struct loops_data
 struct overview_waveform_data
 {
     double samples_per_entry;
-    std::vector<waveform_entry> waveform;
+    std::vector<overview_waveform_entry> waveform;
 
     overview_waveform_data() noexcept = default;
 

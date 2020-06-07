@@ -445,11 +445,6 @@ void track::set_loops(std::array<std::optional<loop>, 8> loops) const
     pimpl_->set_loops(std::move(bloops));
 }
 
-std::vector<waveform_entry> track::overview_waveform() const
-{
-    return pimpl_->overview_waveform();
-}
-
 std::optional<std::string> track::publisher() const
 {
     return from_boost_optional(pimpl_->publisher());
